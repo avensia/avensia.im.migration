@@ -1,0 +1,9 @@
+{
+	"name": "avensia-im-migration-datafactory-test",
+	"location": "northeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "afcc385a-78fc-4551-90a8-a9a5505c2eec",
+		"tenantId": "17191e81-857a-4080-81a2-7ea2401b34c1"
+	}
+}
