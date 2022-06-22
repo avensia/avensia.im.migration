@@ -2,13 +2,12 @@
 	"name": "ExcelSrc",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage3",
+			"referenceName": "linkedServiceMigrationDataFactoryTest",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Source",
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "ExcelSource1.xlsx",

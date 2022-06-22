@@ -2,7 +2,7 @@
 	"name": "DelimitedOutput",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage3",
+			"referenceName": "linkedServiceMigrationDataFactoryTest",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
