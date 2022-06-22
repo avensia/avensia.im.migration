@@ -1,0 +1,70 @@
+{
+	"name": "SourceJson",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "sourcejson.json",
+				"folderPath": "Files",
+				"container": "input"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"createdService": {
+					"type": "string"
+				},
+				"createdBy": {
+					"type": "string"
+				},
+				"createdDate": {
+					"type": "string"
+				},
+				"recordId": {
+					"type": "string"
+				},
+				"rowNo": {
+					"type": "integer"
+				},
+				"modifiedService": {
+					"type": "string"
+				},
+				"modifiedBy": {
+					"type": "string"
+				},
+				"modifiedDate": {
+					"type": "string"
+				},
+				"basecode": {
+					"type": "integer"
+				},
+				"erpstatus": {
+					"type": "string"
+				},
+				"erpsystem": {
+					"type": "string"
+				},
+				"locale": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

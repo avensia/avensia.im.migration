@@ -1,0 +1,9 @@
+{
+	"name": "dftestavensia",
+	"location": "northeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fe22b137-a972-474c-bbca-5f906f5e5ce1",
+		"tenantId": "17191e81-857a-4080-81a2-7ea2401b34c1"
+	}
+}

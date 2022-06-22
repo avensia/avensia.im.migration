@@ -1,0 +1,35 @@
+{
+	"name": "Concatpipeline",
+	"properties": {
+		"description": "This Pipeline is created to do a POC on Concat function in ADF",
+		"activities": [
+			{
+				"name": "Concat Data flow",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "concatdataflow",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-06-21T19:29:36Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

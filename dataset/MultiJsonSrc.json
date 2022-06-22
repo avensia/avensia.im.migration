@@ -1,0 +1,139 @@
+{
+	"name": "MultiJsonSrc",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "output"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"Entities": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string"
+						},
+						"properties": {
+							"type": "object",
+							"properties": {
+								"createdService": {
+									"type": "string"
+								},
+								"createdBy": {
+									"type": "string"
+								},
+								"createdDate": {
+									"type": "string"
+								},
+								"modifiedService": {
+									"type": "string"
+								},
+								"modifiedBy": {
+									"type": "string"
+								},
+								"modifiedDate": {
+									"type": "string"
+								}
+							}
+						},
+						"data": {
+							"type": "object",
+							"properties": {
+								"attributes": {
+									"type": "object",
+									"properties": {
+										"thgbaseCode": {
+											"type": "object",
+											"properties": {
+												"values": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"value": {
+																"type": "integer"
+															},
+															"locale": {
+																"type": "string"
+															},
+															"source": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										},
+										"erpStatus": {
+											"type": "object",
+											"properties": {
+												"values": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"value": {
+																"type": "string"
+															},
+															"locale": {
+																"type": "string"
+															},
+															"source": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										},
+										"erpSystem": {
+											"type": "object",
+											"properties": {
+												"values": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"value": {
+																"type": "string"
+															},
+															"locale": {
+																"type": "string"
+															},
+															"source": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"RowNumber": {
+					"type": "integer"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

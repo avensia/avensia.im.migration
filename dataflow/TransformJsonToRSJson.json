@@ -1,0 +1,106 @@
+{
+	"name": "TransformJsonToRSJson",
+	"properties": {
+		"description": "Reading sample json file from source system and transforming it into RSJSON File.",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SourceJson",
+						"type": "DatasetReference"
+					},
+					"name": "Jsonsource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "RSJSON",
+						"type": "DatasetReference"
+					},
+					"name": "sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn"
+				},
+				{
+					"name": "aggregate"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as string,",
+				"          name as string,",
+				"          type as string,",
+				"          createdService as string,",
+				"          createdBy as string,",
+				"          createdDate as string,",
+				"          recordId as string,",
+				"          rowNo as integer,",
+				"          modifiedService as string,",
+				"          modifiedBy as string,",
+				"          modifiedDate as string,",
+				"          basecode as integer,",
+				"          erpstatus as string,",
+				"          erpsystem as string,",
+				"          locale as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'arrayOfDocuments',",
+				"     unquotedColumnNames: true,",
+				"     hasComments: true,",
+				"     singleQuoted: true) ~> Jsonsource",
+				"Jsonsource derive(Entities = @(id=id,",
+				"          name=name,",
+				"          type=type,",
+				"          properties=@(createdService=createdService,",
+				"          createdBy=createdBy,",
+				"          createdDate=createdDate,",
+				"          modifiedService=modifiedService,",
+				"          modifiedBy=modifiedBy,",
+				"          modifiedDate=modifiedDate),",
+				"          data=@(attributes=@(thgbaseCode=@(values=array(@(value=basecode,",
+				"          locale=locale,",
+				"          source='internal'))),",
+				"          erpStatus=@(values=array(@(value=erpstatus,",
+				"          locale=locale,",
+				"          source='internal'))),",
+				"          erpSystem=@(values=array(@(value=erpsystem,",
+				"          locale=locale,",
+				"          source='internal'))))))) ~> derivedColumn",
+				"derivedColumn aggregate(Entities = collect(Entities)) ~> aggregate",
+				"aggregate sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id as string,",
+				"          name as string,",
+				"          type as string,",
+				"          createdService as string,",
+				"          createdBy as string,",
+				"          createdDate as string,",
+				"          recordId as string,",
+				"          rowNo as integer,",
+				"          modifiedService as string,",
+				"          modifiedBy as string,",
+				"          modifiedDate as string,",
+				"          basecode as integer,",
+				"          erpstatus as string,",
+				"          erpsystem as string,",
+				"          locale as string",
+				"     ),",
+				"     partitionFileNames:['JsonToRSJsonOutput.json'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Entities",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink"
+			]
+		}
+	}
+}

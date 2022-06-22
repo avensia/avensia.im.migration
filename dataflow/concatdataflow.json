@@ -1,0 +1,53 @@
+{
+	"name": "concatdataflow",
+	"properties": {
+		"description": "This DataFlow is used to Concat two columns using Derived Column Transformation",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "sampleinputjson",
+						"type": "DatasetReference"
+					},
+					"name": "sampleinputjson"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "concatoutputjson",
+						"type": "DatasetReference"
+					},
+					"name": "Sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          time as string,",
+				"          callingimsi as string,",
+				"          callingnum1 as string,",
+				"          callingnum2 as string,",
+				"          switch1 as string,",
+				"          switch2 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     rowUrlColumn: 'FileName',",
+				"     documentForm: 'arrayOfDocuments') ~> sampleinputjson",
+				"sampleinputjson derive(concatenatedcolumn = concat(switch1,' ',switch2)) ~> derivedColumn",
+				"derivedColumn sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     rowUrlColumn:'FileName',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Sink"
+			]
+		}
+	}
+}

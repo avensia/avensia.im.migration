@@ -1,0 +1,91 @@
+{
+	"name": "SplitJson",
+	"properties": {
+		"description": "split RSJSON into multiple files",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SourceJson",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Split",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "surrogateKey1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as string,",
+				"          name as string,",
+				"          type as string,",
+				"          createdService as string,",
+				"          createdBy as string,",
+				"          createdDate as string,",
+				"          recordId as string,",
+				"          rowNo as integer,",
+				"          modifiedService as string,",
+				"          modifiedBy as string,",
+				"          modifiedDate as string,",
+				"          basecode as integer,",
+				"          erpstatus as string,",
+				"          erpsystem as string,",
+				"          locale as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'arrayOfDocuments') ~> source1",
+				"source1 derive(Entities = @(id=id,",
+				"          name=name,",
+				"          type=type,",
+				"          properties=@(createdService=createdService,",
+				"          createdBy=createdBy,",
+				"          createdDate=createdDate,",
+				"          modifiedService=modifiedService,",
+				"          modifiedBy=modifiedBy,",
+				"          modifiedDate=modifiedDate),",
+				"          data=@(attributes=@(thgbaseCode=@(values=array(@(value=basecode,",
+				"          locale=locale,",
+				"          source='internal'))),",
+				"          erpStatus=@(values=array(@(value=erpstatus,",
+				"          locale=locale,",
+				"          source='internal'))),",
+				"          erpSystem=@(values=array(@(value=erpsystem,",
+				"          locale=locale,",
+				"          source='internal'))))))) ~> derivedColumn1",
+				"derivedColumn1 keyGenerate(output(RowNumber as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     filePattern:'Dummy[n].json',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Entities,",
+				"          RowNumber",
+				"     ),",
+				"     partitionBy('dynamicRange', 5,",
+				"          RowNumber",
+				"     )) ~> sink2"
+			]
+		}
+	}
+}

@@ -1,0 +1,83 @@
+{
+	"name": "ExcelSrc",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Source",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ExcelSource1.xlsx",
+				"container": "import"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "type",
+				"type": "String"
+			},
+			{
+				"name": "createdService",
+				"type": "String"
+			},
+			{
+				"name": "createdBy",
+				"type": "String"
+			},
+			{
+				"name": "createdDate",
+				"type": "String"
+			},
+			{
+				"name": "recordId",
+				"type": "String"
+			},
+			{
+				"name": "rowNo",
+				"type": "String"
+			},
+			{
+				"name": "modifiedService",
+				"type": "String"
+			},
+			{
+				"name": "modifiedBy",
+				"type": "String"
+			},
+			{
+				"name": "modifiedDate",
+				"type": "String"
+			},
+			{
+				"name": "basecode",
+				"type": "String"
+			},
+			{
+				"name": "erpstatus",
+				"type": "String"
+			},
+			{
+				"name": "erpsystem",
+				"type": "String"
+			},
+			{
+				"name": "locale",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

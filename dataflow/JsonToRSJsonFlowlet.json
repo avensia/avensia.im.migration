@@ -1,0 +1,60 @@
+{
+	"name": "JsonToRSJsonFlowlet",
+	"properties": {
+		"type": "Flowlet",
+		"typeProperties": {
+			"sources": [],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "input1"
+				},
+				{
+					"name": "output1"
+				}
+			],
+			"scriptLines": [
+				"input(output(",
+				"          id as string,",
+				"          name as string,",
+				"          type as string,",
+				"          createdService as string,",
+				"          createdBy as string,",
+				"          createdDate as string,",
+				"          recordId as string,",
+				"          rowNo as integer,",
+				"          modifiedService as string,",
+				"          modifiedBy as string,",
+				"          modifiedDate as string,",
+				"          basecode as integer,",
+				"          erpstatus as string,",
+				"          erpsystem as string,",
+				"          locale as string",
+				"     ),",
+				"     order: 0) ~> input1",
+				"input1 derive(Entities = @(id=id,",
+				"          name=name,",
+				"          type=type,",
+				"          properties=@(createdService=createdService,",
+				"          createdBy=createdBy,",
+				"          createdDate=createdDate,",
+				"          modifiedService=modifiedService,",
+				"          modifiedBy=modifiedBy,",
+				"          modifiedDate=modifiedDate),",
+				"          data=@(attributes=@(thgbaseCode=@(values=array(@(value=basecode,",
+				"          locale=locale,",
+				"          source='internal'))),",
+				"          erpStatus=@(values=array(@(value=erpstatus,",
+				"          locale=locale,",
+				"          source='internal'))),",
+				"          erpSystem=@(values=array(@(value=erpsystem,",
+				"          locale=locale,",
+				"          source='internal'))))))) ~> derivedColumn1",
+				"derivedColumn1 output() ~> output1"
+			]
+		}
+	}
+}

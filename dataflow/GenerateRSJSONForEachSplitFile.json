@@ -1,0 +1,72 @@
+{
+	"name": "GenerateRSJSONForEachSplitFile",
+	"properties": {
+		"description": "Read the split files and convert to RSJSON",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "MultiJsonSrc",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "RSJSON",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "aggregate1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     FileName as string",
+				"}",
+				"source(output(",
+				"          Entities as (id as string, name as string, type as string, properties as (createdService as string, createdBy as string, createdDate as string, modifiedService as string, modifiedBy as string, modifiedDate as string), data as (attributes as (thgbaseCode as (values as (value as integer, locale as string, source as string)[]), erpStatus as (values as (value as string, locale as string, source as string)[]), erpSystem as (values as (value as string, locale as string, source as string)[])))),",
+				"          RowNumber as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine',",
+				"     wildcardPaths:[(concat('Split/',$FileName))]) ~> source1",
+				"source1 aggregate(Entities = collect(Entities)) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id as string,",
+				"          name as string,",
+				"          type as string,",
+				"          createdService as string,",
+				"          createdBy as string,",
+				"          createdDate as string,",
+				"          recordId as string,",
+				"          rowNo as integer,",
+				"          modifiedService as string,",
+				"          modifiedBy as string,",
+				"          modifiedDate as string,",
+				"          basecode as integer,",
+				"          erpstatus as string,",
+				"          erpsystem as string,",
+				"          locale as string",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Entities",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}

@@ -1,0 +1,73 @@
+{
+	"name": "GenerateJson",
+	"properties": {
+		"description": "Convert text file to json",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "CustomerExcel",
+						"type": "DatasetReference"
+					},
+					"name": "customer"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CustomerJson",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "CustomerComplex"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate2"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          custid as string,",
+				"          custname as string,",
+				"          itemname as string,",
+				"          quantity as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> customer",
+				"customer derive(Puchases = @(itemName=itemname,",
+				"          Quantity=quantity)) ~> CustomerComplex",
+				"CustomerComplex aggregate(groupBy(custid,",
+				"          custname),",
+				"     Puchases = collect(Puchases)) ~> aggregate1",
+				"aggregate1 derive(Customers = @(id=custid,",
+				"          Purchases=Puchases),",
+				"          dummy = 1,",
+				"     partitionBy('hash', 1)) ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(dummy),",
+				"     Customers = collect(Customers),",
+				"     partitionBy('hash', 1)) ~> aggregate2",
+				"aggregate2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['Customer.json'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Customers",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}

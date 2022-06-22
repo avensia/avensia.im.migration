@@ -1,0 +1,664 @@
+{
+	"name": "copyinputjson",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "495e9447-c2a0-4391-8f45-d23b68044fcd_0.json",
+				"container": "import"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"entities": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"type": {
+								"type": "string"
+							},
+							"properties": {
+								"type": "object",
+								"properties": {
+									"createdService": {
+										"type": "string"
+									},
+									"createdBy": {
+										"type": "string"
+									},
+									"createdDate": {
+										"type": "string"
+									},
+									"modifiedService": {
+										"type": "string"
+									},
+									"modifiedBy": {
+										"type": "string"
+									},
+									"modifiedDate": {
+										"type": "string"
+									}
+								}
+							},
+							"data": {
+								"type": "object",
+								"properties": {
+									"attributes": {
+										"type": "object",
+										"properties": {
+											"rkthgbaseproductnumber": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgbasecode": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgproductname": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgstatus": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																},
+																"properties": {
+																	"type": "object",
+																	"properties": {
+																		"referenceDataIdentifier": {
+																			"type": "string"
+																		},
+																		"referenceData": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthglocallaunchdate": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"os": {
+																	"type": "string"
+																},
+																"osid": {
+																	"type": "string"
+																},
+																"ostype": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgtotalsku": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "integer"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"os": {
+																	"type": "string"
+																},
+																"osid": {
+																	"type": "string"
+																},
+																"ostype": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkproductcategory": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																},
+																"properties": {
+																	"type": "object",
+																	"properties": {
+																		"referenceDataIdentifier": {
+																			"type": "string"
+																		},
+																		"refIdPath": {
+																			"type": "string"
+																		},
+																		"referenceData": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgcompany": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																},
+																"properties": {
+																	"type": "object",
+																	"properties": {
+																		"referenceDataIdentifier": {
+																			"type": "string"
+																		},
+																		"referenceData": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgsbu": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgchannel": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																},
+																"properties": {
+																	"type": "object",
+																	"properties": {
+																		"referenceDataIdentifier": {
+																			"type": "string"
+																		},
+																		"referenceData": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgcountry": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																},
+																"properties": {
+																	"type": "object",
+																	"properties": {
+																		"referenceDataIdentifier": {
+																			"type": "string"
+																		},
+																		"referenceData": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgsubbrand": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																},
+																"properties": {
+																	"type": "object",
+																	"properties": {
+																		"referenceDataIdentifier": {
+																			"type": "string"
+																		},
+																		"referenceData": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgmasterlaunchdate": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgheight": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "integer"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																},
+																"uom": {
+																	"type": "string"
+																},
+																"properties": {
+																	"type": "object",
+																	"properties": {
+																		"uomIdentifier": {
+																			"type": "string"
+																		},
+																		"uomData": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthglength": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "integer"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																},
+																"uom": {
+																	"type": "string"
+																},
+																"properties": {
+																	"type": "object",
+																	"properties": {
+																		"uomIdentifier": {
+																			"type": "string"
+																		},
+																		"uomData": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgvolume": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "integer"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																},
+																"uom": {
+																	"type": "string"
+																},
+																"properties": {
+																	"type": "object",
+																	"properties": {
+																		"uomIdentifier": {
+																			"type": "string"
+																		},
+																		"uomData": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgmasterdescription": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											},
+											"rkthgbrand": {
+												"type": "object",
+												"properties": {
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																},
+																"locale": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string"
+																},
+																"properties": {
+																	"type": "object",
+																	"properties": {
+																		"referenceDataIdentifier": {
+																			"type": "string"
+																		},
+																		"referenceData": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
