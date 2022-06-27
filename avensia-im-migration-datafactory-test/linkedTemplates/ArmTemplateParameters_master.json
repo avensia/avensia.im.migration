@@ -5,9 +5,6 @@
 		"factoryName": {
 			"value": "avensia-im-migration-datafactory-test"
 		},
-		"AzureBlobStorage3_connectionString": {
-			"value": ""
-		},
 		"linkedServiceMigrationDataFactoryTest_connectionString": {
 			"value": ""
 		},

@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "avensia-im-migration-datafactory-test"
 		},
-		"AzureBlobStorage3_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage3'"
-		},
 		"linkedServiceMigrationDataFactoryTest_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'linkedServiceMigrationDataFactoryTest'"
@@ -41,9 +37,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"AzureBlobStorage3_connectionString": {
-						"value": "[parameters('AzureBlobStorage3_connectionString')]"
 					},
 					"linkedServiceMigrationDataFactoryTest_connectionString": {
 						"value": "[parameters('linkedServiceMigrationDataFactoryTest_connectionString')]"
